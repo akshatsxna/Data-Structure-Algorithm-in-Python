@@ -1,0 +1,40 @@
+A "sequence" is a group of items with a deterministic ordering. Lists, tuples and ranges are some common sequence types in Python.
+
+A "subsequence" is a sequence obtained by deleting zero or more elements from another sequence. For example, "edpt" is a subsequence of "serendipitous".
+
+Recursive Solution
+
+-> Create two counters idx1 and idx2 starting at 0. Our recursive function will compute the LCS of seq1[idx1:] and seq2[idx2:]
+-> If seq1[idx1] and seq2[idx2] are equal, then this character belongs to the LCS of seq1[idx1:] and seq2[idx2:] (why?). Further the length this is LCS is one more than 
+LCS of seq1[idx1+1:] and seq2[idx2+1:]
+-> If not, then the LCS of seq1[idx1:] and seq2[idx2:] is the longer one among the LCS of seq1[idx1+1:], seq2[idx2:] and the LCS of seq1[idx1:], seq2[idx2+1:]
+-> If either seq1[idx1:] or seq2[idx2:] is empty, then their LCS is empty.
+
+Dynamic programming
+
+-> Create a table of size (n1+1) * (n2+1) initialized with 0s, where n1 and n2 are the lengths of the sequences. table[i][j] represents the longest common subsequence of 
+seq1[:i] and seq2[:j].
+-> If seq1[i] and seq2[j] are equal, then table[i+1][j+1] = 1 + table[i][j]
+-> If seq1[i] and seq2[j] are equal, then table[i+1][j+1] = max(table[i][j+1], table[i+1][j])
+
+#### Dynamic Programming
+
+1. Create a table of size `(n+1) * (capacity+1)` consisting of all 0s, where is `n` is the number of elements. `table[i][c]` represents the maximum profit that can be obtained using the first `i` elements if the maximum capacity is `c`. Here's a visual representation of a filled table (source - geeksforgeeks):
+
+<img src="https://i2.wp.com/techieme.in/wp-content/uploads/01knapsack.png?w=1213" width="640">
+
+(The 0th row will contain all zeros and is not shown above.)
+
+2. We'll fill the table row by row and column by column. `table[i][c]` can be filled using some values in the row above it.
+
+3. If `weights[i] > c` i.e. if the current element can is larger than capacity, then `table[i+1][c]` is simply equal to `table[i][c]` (since there's no way we can pick this element).
+
+4. If `weights[i] <= c` then we have two choices: to either pick the current element or not to get the value of `table[i+1][c]`. We can compare the maximum profit for both these options and pick the better one as the value of `table[i][c]`.
+
+    A. If we don't pick  the element with weight `weights[i]`, then once again the maximum profit is `table[i][c]`
+    
+    B. If we pick the element with weight `weights[i]`, then the maximum profit is `profits[i] + table[i][c-weights[i]]`, since we have used up some capacity.
+    
+
+
+Verify that the complexity of the dynamic programming solution is O(N * W)$.

@@ -1,0 +1,61 @@
+Complexity and Big O Notation
+Complexity of an algorithm is a measure of the amount of time and/or space required by an algorithm for an input of a given size e.g. N. Unless otherwise stated, the term
+complexity always refers to the worst-case complexity (i.e. the highest possible time/space taken by the program/algorithm to process an input).
+
+In the case of linear search:
+
+The time complexity of the algorithm is cN for some fixed constant c that depends on the number of operations we perform in each iteration and the time taken to execute 
+a statement. Time complexity is sometimes also called the running time of the algorithm.
+
+The space complexity is some constant c' (independent of N), since we just need a single variable position to iterate through the array, and it occupies a constant space 
+in the computer's memory (RAM).
+
+Big O Notation: Worst-case complexity is often expressed using the Big O notation. In the Big O, we drop fixed constants and lower powers of variables to capture the 
+trend of relationship between the size of the input and the complexity of the algorithm i.e. if the complexity of the algorithm is cN^3 + dN^2 + eN + f, in the 
+Big O notation it is expressed as O(N^3)
+
+Thus, the time complexity of linear search is O(N) and its space complexity is O(1).
+
+**Analyze the algorithm's complexity and identify inefficiencies, if any.
+
+Once again, let's try to count the number of iterations in the algorithm. If we start out with an array of N elements, then each time the size of the array reduces to 
+half for the next iteration, until we are left with just 1 element.
+
+Initial length - N
+
+Iteration 1 - N/2
+
+Iteration 2 - N/4 i.e. N/2^2
+
+Iteration 3 - N/8 i.e. N/2^3
+
+...
+
+Iteration k - N/2^k
+
+Since the final length of the array is 1, we can find the
+
+N/2^k = 1
+
+Rearranging the terms, we get
+
+N = 2^k
+
+Taking the logarithm
+
+k = log N
+
+Where log refers to log to the base 2. Therefore, our algorithm has the time complexity O(log N). This fact is often stated as: binary search runs in logarithmic time.
+You can verify that the space complexity of binary search is O(1).
+
+Generic Binary Search
+
+Here is the general strategy behind binary search, which is applicable to a variety of problems:
+
+1. Come up with a condition to determine whether the answer lies before, after or at a given position
+2. Retrieve the midpoint and the middle element of the list.
+3. If it is the answer, return the middle position as the answer.
+4. If answer lies before it, repeat the search with the first half of the list
+5. If the answer lies after it, repeat the search with the second half of the list.
+
+**Note that binary_search accepts a function condition as an argument. Python allows passing functions as arguments to other functions, unlike C++ and Java.**

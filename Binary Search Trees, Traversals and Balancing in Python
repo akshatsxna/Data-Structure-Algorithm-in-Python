@@ -1,0 +1,48 @@
+
+Analyze the algorithm's complexity and identify inefficiencies
+The operations insert, find, update involves iterating over a list of users, in the worst case, they may take up to N iterations to return a result, where N is the 
+total 
+number of users. list_all however, simply returns the existing internal list of users.
+
+Thus, the time complexities of the various operations are:
+
+1. Insert: O(N)
+2. Find: O(N)
+3. Update: O(N)
+4. List: O(1)
+
+It's called a tree because it vaguely like an inverted tree trunk with branches.
+
+The word "binary" indicates that each "node" in the tree can have at most 2 children (left or right).
+Nodes can have 0, 1 or 2 children. Nodes that do not have any children are sometimes also called "leaves".
+The single node at the top is called the "root" node, and it typically where operations like search, insertion etc. begin.
+
+#Treemap
+A treemap provides a stratified view of data and makes it easy to blot the patterns. The tree branches are characterized by rectangles and each of the sub_branches is 
+shown in a smaller rectangle.
+
+Parameters:
+
+1. data_frame: This argument needs to be passed for column names (and not keyword names) to be used. Array-like and dict are transformed internally to a pandas 
+DataFrame.
+
+2. names: Either a name of a column in data_frame, or a pandas Series or array_like object. Values from this column or array_like are used as labels for sectors.
+
+3. values: Either a name of a column in data_frame, or a pandas Series or array_like object. Values from this column or array_like are used to set values associated to 
+sectors.
+
+4. path: Either names of columns in data_frame, or pandas Series, or array_like objects List of columns names or columns of a rectangular dataframe defining the 
+hierarchy of sectors, from root to leaves. 
+
+5. color: Either a name of a column in data_frame, or a pandas Series or array_like object. Values from this column or array_like are used to assign color to marks.
+
+# Self-Balancing Binary Trees and AVL Trees
+An AVL tree is a self-balancing binary search tree where the difference between heights of left and right subtrees cannot be more than one. This difference is known as
+a balance factor. In the AVL tree, the values of balance factor could be either -1, 0 or 1.
+
+# Time Complexity in Binary Search Tree
+
+If the binary search tree is almost a balanced tree then all the operations will have a time complexity of O(logn) because the search is divided either to the left or 
+the right subtree.
+If the binary search tree is either left or right-skewed, then all the operations will have the time complexity of O(n) because we need to traverse till the n elements.
+

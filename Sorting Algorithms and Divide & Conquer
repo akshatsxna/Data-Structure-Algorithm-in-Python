@@ -1,0 +1,57 @@
+Here's a systematic strategy we'll apply for solving problems:
+
+1. State the problem clearly. Identify the input & output formats.
+
+2. Come up with some example inputs & outputs. Try to cover all edge cases.
+
+3. Come up with a correct solution for the problem. State it in plain English.
+
+4. Implement the solution and test it using example inputs. Fix bugs, if any.
+
+5. Analyze the algorithm's complexity and identify inefficiencies, if any.
+
+6. Apply the right technique to overcome the inefficiency. Repeat steps 3 to 6.
+
+Here are some scenarios we may want to test out:
+Some lists of numbers in random order.
+
+-> A list that's already sorted.
+-> A list that's sorted in descending order.
+-> A list containing repeating elements.
+-> An empty list.
+-> A list containing just one element.
+-> A list containing one element repeated many times.
+-> A really long list.
+
+Analyze the algorithm's complexity and identify inefficiencies
+The core operations in bubble sort are "compare" and "swap". To analyze the time complexity, we can simply count the total number of comparisons being made, since the 
+total number of swaps will be less than or equal to the total number of comparisons (can you see why?).
+
+for _ in range(len(nums) - 1):
+    for i in range(len(nums) - 1):
+        if nums[i] > nums[i+1]:
+            nums[i], nums[i+1] = nums[i+1], nums[i]
+There are two loops, each of length n-1, where n is the number of elements in nums. So the total number of comparisons is 
+(n−1)∗(n−1) i.e.(n−1)2 i.e.n^2−2n+1
+
+Expressing this in the Big O notation, we can conclude that the time complexity of bubble sort is O(n^2) (also known as quadratic complexity).
+
+To performing sorting more efficiently, we'll apply a strategy called Divide and Conquer, which has the following general steps:
+-> Divide the inputs into two roughly equal parts.
+-> Recursively solve the problem individually for each of the two parts.
+-> Combine the results to solve the problem for the original inputs.
+-> Include terminating conditions for small or indivisible inputs.
+
+Space Complexity
+To find the space complexity of merge sort, it helps to recall that a new list with equal to the sum of the sizes of the two lists is created in each invocation of 
+merge.
+i, j, merged = 0, 0, []
+while i < len(nums1) and j < len(nums2):
+    if nums1[i] <= nums2[j]:
+        merged.append(nums1[i])
+        i += 1
+    else:
+        merged.append(nums2[j])
+        j += 1
+        
+At first glance, it may seem that O(n) space is required for each level of the tree, so the space complexity of merge sort is O(n log n).        
